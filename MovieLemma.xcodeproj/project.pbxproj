@@ -3,10 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		280D54E7230F4A72006E1E7D /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280D54E6230F4A72006E1E7D /* Movie.swift */; };
+		280D54EA230F5BAB006E1E7D /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280D54E9230F5BAB006E1E7D /* Review.swift */; };
 		28273123230F13CD00F04AE5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28273122230F13CD00F04AE5 /* AppDelegate.swift */; };
 		28273128230F13CD00F04AE5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28273126230F13CD00F04AE5 /* Main.storyboard */; };
 		2827312A230F13CF00F04AE5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28273129230F13CF00F04AE5 /* Assets.xcassets */; };
@@ -16,6 +18,9 @@
 		28273153230F15A400F04AE5 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28273152230F15A400F04AE5 /* SignUpViewController.swift */; };
 		28273155230F15B400F04AE5 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28273154230F15B400F04AE5 /* LoginViewController.swift */; };
 		28273157230F18D800F04AE5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 28273156230F18D800F04AE5 /* GoogleService-Info.plist */; };
+		2881B650230F2B7800997290 /* InitialReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2881B64F230F2B7800997290 /* InitialReviewViewController.swift */; };
+		2881B652230F2BD800997290 /* InitialReviewPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2881B651230F2BD800997290 /* InitialReviewPageViewController.swift */; };
+		2881B654230F2D7500997290 /* InitialReviewDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2881B653230F2D7500997290 /* InitialReviewDataViewController.swift */; };
 		29CD40F3869A8E4C95B6B6F0 /* Pods_MovieLemma.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB9192F8945D13721E6B3133 /* Pods_MovieLemma.framework */; };
 		340EA06BCB4DB4DD57ABBFFC /* Pods_MovieLemmaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 841FE1B119EC3C9090F2F20B /* Pods_MovieLemmaTests.framework */; };
 		FB78506E112E1D865BEFCE20 /* Pods_MovieLemmaUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47FF7FC1C26A66ADC4A92388 /* Pods_MovieLemmaUITests.framework */; };
@@ -40,6 +45,8 @@
 
 /* Begin PBXFileReference section */
 		078DDA6A9E375A9FA7264866 /* Pods-MovieLemmaUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieLemmaUITests.release.xcconfig"; path = "Target Support Files/Pods-MovieLemmaUITests/Pods-MovieLemmaUITests.release.xcconfig"; sourceTree = "<group>"; };
+		280D54E6230F4A72006E1E7D /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		280D54E9230F5BAB006E1E7D /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
 		2827311F230F13CD00F04AE5 /* MovieLemma.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieLemma.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		28273122230F13CD00F04AE5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		28273127230F13CD00F04AE5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -52,9 +59,12 @@
 		2827313E230F13CF00F04AE5 /* MovieLemmaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MovieLemmaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		28273142230F13CF00F04AE5 /* MovieLemmaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieLemmaUITests.swift; sourceTree = "<group>"; };
 		28273144230F13CF00F04AE5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		28273152230F15A400F04AE5 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		28273152230F15A400F04AE5 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SignUpViewController.swift; path = "../New Group/SignUpViewController.swift"; sourceTree = "<group>"; };
 		28273154230F15B400F04AE5 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		28273156230F18D800F04AE5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		2881B64F230F2B7800997290 /* InitialReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialReviewViewController.swift; sourceTree = "<group>"; };
+		2881B651230F2BD800997290 /* InitialReviewPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialReviewPageViewController.swift; sourceTree = "<group>"; };
+		2881B653230F2D7500997290 /* InitialReviewDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialReviewDataViewController.swift; sourceTree = "<group>"; };
 		405845383309A525DF831D44 /* Pods-MovieLemma.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieLemma.release.xcconfig"; path = "Target Support Files/Pods-MovieLemma/Pods-MovieLemma.release.xcconfig"; sourceTree = "<group>"; };
 		453EF62DB1C3EFC4222CC2C0 /* Pods-MovieLemmaUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieLemmaUITests.debug.xcconfig"; path = "Target Support Files/Pods-MovieLemmaUITests/Pods-MovieLemmaUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		47FF7FC1C26A66ADC4A92388 /* Pods_MovieLemmaUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MovieLemmaUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -93,6 +103,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		280D54E5230F4A34006E1E7D /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				280D54E6230F4A72006E1E7D /* Movie.swift */,
+				280D54E9230F5BAB006E1E7D /* Review.swift */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		280D54E8230F53D8006E1E7D /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				28273154230F15B400F04AE5 /* LoginViewController.swift */,
+				28273152230F15A400F04AE5 /* SignUpViewController.swift */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
 		28273116230F13CD00F04AE5 = {
 			isa = PBXGroup;
 			children = (
@@ -118,6 +146,7 @@
 		28273121230F13CD00F04AE5 /* MovieLemma */ = {
 			isa = PBXGroup;
 			children = (
+				280D54E5230F4A34006E1E7D /* Classes */,
 				28273156230F18D800F04AE5 /* GoogleService-Info.plist */,
 				28273151230F158300F04AE5 /* Views */,
 				28273150230F157600F04AE5 /* ViewControllers */,
@@ -151,8 +180,10 @@
 		28273150230F157600F04AE5 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				28273152230F15A400F04AE5 /* SignUpViewController.swift */,
-				28273154230F15B400F04AE5 /* LoginViewController.swift */,
+				280D54E8230F53D8006E1E7D /* Authentication */,
+				2881B64F230F2B7800997290 /* InitialReviewViewController.swift */,
+				2881B651230F2BD800997290 /* InitialReviewPageViewController.swift */,
+				2881B653230F2D7500997290 /* InitialReviewDataViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -184,7 +215,6 @@
 				453EF62DB1C3EFC4222CC2C0 /* Pods-MovieLemmaUITests.debug.xcconfig */,
 				078DDA6A9E375A9FA7264866 /* Pods-MovieLemmaUITests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -254,6 +284,10 @@
 		28273117230F13CD00F04AE5 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				KnownAssetTags = (
+					1,
+					2,
+				);
 				LastSwiftUpdateCheck = 1030;
 				LastUpgradeCheck = 1030;
 				ORGANIZATIONNAME = "Henry Vuong";
@@ -410,9 +444,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				280D54E7230F4A72006E1E7D /* Movie.swift in Sources */,
+				280D54EA230F5BAB006E1E7D /* Review.swift in Sources */,
 				28273155230F15B400F04AE5 /* LoginViewController.swift in Sources */,
+				2881B650230F2B7800997290 /* InitialReviewViewController.swift in Sources */,
 				28273153230F15A400F04AE5 /* SignUpViewController.swift in Sources */,
+				2881B652230F2BD800997290 /* InitialReviewPageViewController.swift in Sources */,
 				28273123230F13CD00F04AE5 /* AppDelegate.swift in Sources */,
+				2881B654230F2D7500997290 /* InitialReviewDataViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

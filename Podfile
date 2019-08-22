@@ -8,6 +8,7 @@ target 'MovieLemma' do
   # Pods for MovieLemma
   pod 'Firebase/Auth'
   pod 'Firebase/Firestore'
+  pod 'AlamofireImage'
 
 
   target 'MovieLemmaTests' do

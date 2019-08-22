@@ -13,7 +13,7 @@
         <!--Login View Controller-->
         <scene sceneID="XmQ-ck-7w5">
             <objects>
-                <viewController storyboardIdentifier="LoginView" id="V27-hP-J3w" customClass="LoginViewController" customModule="ValetStorage" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginView" id="V27-hP-J3w" customClass="LoginViewController" customModule="MovieLemma" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="HF7-xV-Xfd">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -109,16 +109,32 @@
                         <outlet property="logoImageView" destination="WqV-kl-N89" id="Mgf-Eb-5oS"/>
                         <outlet property="passwordTextField" destination="Eoo-S3-w37" id="5w5-5S-uoi"/>
                         <outlet property="signupOutlet" destination="JuA-EB-vrv" id="CP1-0o-7lI"/>
+                        <segue destination="L0d-mX-Dxu" kind="presentation" identifier="HomeSegue" id="YFe-ww-rZ1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Fz-KK-EYK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-92" y="97.601199400299862"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="wWC-Zx-7x8">
+            <objects>
+                <viewController id="L0d-mX-Dxu" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="klH-9Y-Opi">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="wyb-3f-LeX"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SMj-8u-OI8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1018" y="-276"/>
+        </scene>
         <!--Signup View Controller-->
         <scene sceneID="fyM-o1-wcX">
             <objects>
-                <viewController id="fOZ-v4-2k7" customClass="SignupViewController" customModule="ValetStorage" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="fOZ-v4-2k7" customClass="SignupViewController" customModule="MovieLemma" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fDf-Ks-JVh">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -228,17 +244,128 @@
                         <outlet property="passwordTextField" destination="DCP-nb-Kfw" id="oha-5Z-8m5"/>
                         <outlet property="signinButtonOutlet" destination="noF-Xk-s7s" id="8jf-YO-hDC"/>
                         <outlet property="signupButtonOutlet" destination="kJZ-PZ-zJW" id="Czf-52-Gn5"/>
+                        <segue destination="qcX-La-CA3" kind="presentation" identifier="InitialReviewSegue" id="bMG-fp-iD5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p2G-PJ-grQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="773.60000000000002" y="603.14842578710648"/>
+            <point key="canvasLocation" x="884" y="755"/>
+        </scene>
+        <!--Initial Review Page View Controller-->
+        <scene sceneID="gs3-G3-U8d">
+            <objects>
+                <pageViewController storyboardIdentifier="InitialReviewPageViewController" autoresizesArchivedViewToFullSize="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="NvQ-Us-LX2" customClass="InitialReviewPageViewController" customModule="MovieLemma" customModuleProvider="target" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="c4u-dh-6AB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3117" y="175"/>
+        </scene>
+        <!--Initial Review Data View Controller-->
+        <scene sceneID="wEB-Hm-AO1">
+            <objects>
+                <viewController storyboardIdentifier="InitialReviewDataViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="7ob-Ga-HcX" customClass="InitialReviewDataViewController" customModule="MovieLemma" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6YK-Jo-ozH">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Star Wars Episode V: Empire Strikes Back" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WOP-Ik-BFw">
+                                <rect key="frame" x="38" y="45" width="339" height="69"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sDd-eC-5Ut">
+                                <rect key="frame" x="87" y="140" width="240" height="259"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1977" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XQG-tc-Loq">
+                                <rect key="frame" x="38" y="415" width="339" height="47"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2XR-el-rN9">
+                                <rect key="frame" x="47" y="582" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="1"/>
+                                <connections>
+                                    <action selector="ratingsButton:" destination="7ob-Ga-HcX" eventType="touchUpInside" id="moR-kM-XLo"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uvh-jh-RFz">
+                                <rect key="frame" x="108" y="582" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="2"/>
+                                <connections>
+                                    <action selector="ratingsButton:" destination="7ob-Ga-HcX" eventType="touchUpInside" id="bQa-Ig-0eC"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M6K-dK-FSp">
+                                <rect key="frame" x="171" y="581" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="3"/>
+                                <connections>
+                                    <action selector="ratingsButton:" destination="7ob-Ga-HcX" eventType="touchUpInside" id="J04-pd-TCY"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="4" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B2U-pF-l79">
+                                <rect key="frame" x="232" y="581" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="4"/>
+                                <connections>
+                                    <action selector="ratingsButton:" destination="7ob-Ga-HcX" eventType="touchUpInside" id="DQ9-8m-HVe"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="5" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vZb-m3-AIP">
+                                <rect key="frame" x="326" y="580" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="5"/>
+                                <connections>
+                                    <action selector="ratingsButton:" destination="7ob-Ga-HcX" eventType="touchUpInside" id="Fp5-qV-aUX"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="NUt-DX-Lg2"/>
+                    </view>
+                    <connections>
+                        <outlet property="dateLabel" destination="XQG-tc-Loq" id="OBK-cT-AgB"/>
+                        <outlet property="imageView" destination="sDd-eC-5Ut" id="Iyn-aB-jHm"/>
+                        <outlet property="movieLabel" destination="WOP-Ik-BFw" id="FWa-aD-JeO"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5kW-Ou-fB4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3928.985507246377" y="575.54347826086962"/>
+        </scene>
+        <!--Initial Review View Controller-->
+        <scene sceneID="Xnf-99-GYr">
+            <objects>
+                <viewController id="qcX-La-CA3" customClass="InitialReviewViewController" customModule="MovieLemma" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="VdG-He-CaW">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RlA-pI-q7G">
+                                <rect key="frame" x="0.0" y="20" width="414" height="647"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.55634254220000001" green="0.97934550050000002" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="IGf-5f-c3z"/>
+                    </view>
+                    <connections>
+                        <outlet property="contentView" destination="RlA-pI-q7G" id="hlg-0k-73l"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IUT-ra-xlA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1908.6956521739132" y="531.52173913043487"/>
         </scene>
     </scenes>
     <resources>
         <image name="LogoName" width="16" height="16"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="g9d-Ec-GJc"/>
-    </inferredMetricsTieBreakers>
 </document>

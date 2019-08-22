@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class SignupViewController: UIViewController, UITextFieldDelegate {
     
@@ -71,9 +72,19 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    // need to add error handling and nil handling
     @IBAction func signupButton(_ sender: Any) {
-        
-        
+        self.performSegue(withIdentifier: "InitialReviewSegue", sender: nil)
+//        if emailTextField.text != "" && passwordTextField.text != "" {
+//            Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) { authResult, error in
+//
+//                if error == nil {
+//                    self.performSegue(withIdentifier: "InitialReviewSegue", sender: nil)
+//                } else {
+//                    // sign up failed
+//                }
+//            }
+//        }
     }
     
     func updateFormFeedback() {
