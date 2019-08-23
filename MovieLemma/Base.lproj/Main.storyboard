@@ -325,6 +325,13 @@
                                     <action selector="ratingsButton:" destination="7ob-Ga-HcX" eventType="touchUpInside" id="Fp5-qV-aUX"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k5j-Fu-b5N">
+                                <rect key="frame" x="38" y="470" width="339" height="47"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="NUt-DX-Lg2"/>
@@ -333,6 +340,7 @@
                         <outlet property="dateLabel" destination="XQG-tc-Loq" id="OBK-cT-AgB"/>
                         <outlet property="imageView" destination="sDd-eC-5Ut" id="Iyn-aB-jHm"/>
                         <outlet property="movieLabel" destination="WOP-Ik-BFw" id="FWa-aD-JeO"/>
+                        <outlet property="ratingLabel" destination="k5j-Fu-b5N" id="qow-rY-T3y"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5kW-Ou-fB4" userLabel="First Responder" sceneMemberID="firstResponder"/>

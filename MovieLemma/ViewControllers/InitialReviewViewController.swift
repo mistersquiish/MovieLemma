@@ -9,7 +9,7 @@
 import UIKit
 import AlamofireImage
 
-class InitialReviewViewController: UIViewController {
+class InitialReviewViewController: UIViewController, updateReview {
 
     @IBOutlet weak var contentView: UIView!
     
@@ -26,7 +26,6 @@ class InitialReviewViewController: UIViewController {
     func configurePageViewController() {
         movies = Movie.generateMovie()
         reviews = createReviews()
-        print(reviews)
         
         guard let pageViewController = storyboard?.instantiateViewController(withIdentifier: String(describing: InitialReviewPageViewController.self)) as? InitialReviewPageViewController else {
             return
@@ -65,7 +64,9 @@ class InitialReviewViewController: UIViewController {
         dataViewController.index = index
         dataViewController.displayText = movies[index].title
         dataViewController.imageURL = movies[index].posterUrl
-        dataViewController.dateText = String(describing: movies[index].releaseDate)
+        dataViewController.dateText = String(describing: movies[index].releaseDate!)
+        dataViewController.ratingText = String(describing: reviews[index].rating!)
+        dataViewController.updateReviewDelegate = self
         
         return dataViewController
     }
@@ -78,6 +79,11 @@ class InitialReviewViewController: UIViewController {
         }
         
         return reviews
+    }
+    
+    // delegate method to update reviews
+    func updateReview(index: Int, rating: Int) {
+        reviews[index].rating = rating
     }
 }
 
@@ -112,6 +118,8 @@ extension InitialReviewViewController: UIPageViewControllerDelegate, UIPageViewC
         guard var currentIndex = dataViewController?.index else {
             return nil
         }
+        // update ratings
+        //reviews[currentViewControllerIndex].rating = Int((dataViewController?.ratingLabel.text)!)
         
         currentViewControllerIndex = currentIndex
         
@@ -121,6 +129,7 @@ extension InitialReviewViewController: UIPageViewControllerDelegate, UIPageViewC
         
         currentIndex += 1
         currentViewControllerIndex = currentIndex
+        
         return detailViewControllerAt(index: currentIndex)
     }
 }
