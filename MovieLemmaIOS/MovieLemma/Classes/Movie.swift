@@ -26,7 +26,7 @@ class Movie {
         movieList.append(Movie(title: "The Godfather", movieId: 1, posterUrlStr: "/rPdtLWNsZmAtoZl9PK7S2wE3qiS.jpg", releaseDate: 1972))
         movieList.append(Movie(title: "Pulp Fiction", movieId: 2, posterUrlStr: "/dM2w364MScsjFf8pfMbaWUcWrR.jpg", releaseDate: 1994))
         movieList.append(Movie(title: "Forest Gump", movieId: 3, posterUrlStr: "/yE5d3BUhE8hCnkMUJOo1QDoOGNz.jpg", releaseDate: 1994))
-        movieList.append(Movie(title: "The Dark Knight", movieId: 4, posterUrlStr: "/qJ2tW6WMUDux911r6m7haRef0WH.jpg", releaseDate: 1994))
+        movieList.append(Movie(title: "The Dark Knight", movieId: 4, posterUrlStr: "/qJ2tW6WMUDux911r6m7haRef0WH.jpg", releaseDate: 2008))
         movieList.append(Movie(title: "The Lord of the Rings: The Return of the King", movieId: 5, posterUrlStr: "/rCzpDGLbOoPwLjy3OAm5NUPOTrC.jpg", releaseDate: 2003))
         movieList.append(Movie(title: "The Empire Strikes Back", movieId: 6, posterUrlStr: "/9SKDSFbaM6LuGqG1aPWN3wYGEyD.jpg", releaseDate: 1980))
         movieList.append(Movie(title: "Avengers: Endgame", movieId: 7, posterUrlStr: "/or06FN3Dka5tukK1e9sl16pB3iy.jpg", releaseDate: 2019))
