@@ -75,16 +75,29 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
     // need to add error handling and nil handling
     @IBAction func signupButton(_ sender: Any) {
         self.performSegue(withIdentifier: "InitialReviewSegue", sender: nil)
-//        if emailTextField.text != "" && passwordTextField.text != "" {
-//            Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) { authResult, error in
-//
-//                if error == nil {
-//                    self.performSegue(withIdentifier: "InitialReviewSegue", sender: nil)
-//                } else {
-//                    // sign up failed
-//                }
-//            }
-//        }
+        if emailTextField.text != "" && passwordTextField.text != "" {
+            Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) { authResult, error in
+
+                if error == nil {
+                    // sign in user
+                    Auth.auth().signIn(withEmail: self.emailTextField.text!, password: self.passwordTextField.text!) { [weak self] user, error in
+                        // update user name
+                        let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
+                        changeRequest?.displayName = self!.nameTextField.text!
+                        changeRequest?.commitChanges { (error) in
+                            // ...
+                        }
+                        
+                        // proceed to next view
+                        self!.performSegue(withIdentifier: "InitialReviewSegue", sender: nil)
+                    }
+
+                } else {
+                    // sign up failed
+                }
+            }
+        }
+        
     }
     
     func updateFormFeedback() {

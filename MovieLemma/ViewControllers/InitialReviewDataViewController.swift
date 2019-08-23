@@ -9,17 +9,16 @@
 import UIKit
 import AlamofireImage
 
-protocol updateReview {
-    func updateReview(index: Int, rating: Int)
+protocol didRate {
+    func didRate(index: Int, rating: Int)
 }
 
 class InitialReviewDataViewController: UIViewController {
     @IBOutlet weak var movieLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var ratingLabel: UILabel!
-    
-    var updateReviewDelegate: updateReview?
+
+    var didRateDelegate: didRate?
     var displayText: String!
     var imageURL: URL!
     var dateText: String!
@@ -28,9 +27,8 @@ class InitialReviewDataViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        movieLabel.text = displayText
+        movieLabel.text = displayText + " (\(dateText!))"
         imageView.af_setImage(withURL: imageURL)
-        dateLabel.text = dateText!
         ratingLabel.text = ratingText!
         
         // Do any additional setup after loading the view.
@@ -38,7 +36,7 @@ class InitialReviewDataViewController: UIViewController {
     
     @IBAction func ratingsButton(_ sender: UIButton) {
         ratingLabel.text = String(describing: sender.tag)
-        updateReviewDelegate?.updateReview(index: index, rating: sender.tag)
+        didRateDelegate?.didRate(index: index, rating: sender.tag)
     }
     
 

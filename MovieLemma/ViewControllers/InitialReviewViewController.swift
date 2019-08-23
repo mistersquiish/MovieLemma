@@ -8,20 +8,55 @@
 
 import UIKit
 import AlamofireImage
+import Firebase
 
-class InitialReviewViewController: UIViewController, updateReview {
+class InitialReviewViewController: UIViewController, didRate {
 
     @IBOutlet weak var contentView: UIView!
+    @IBOutlet weak var continueButtonOutlet: UIButton!
     
     var movies: [Movie] = []
     var reviews: [Review] = []
     var currentViewControllerIndex = 0
+    var db: Firestore!
+    var currentUser: User!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configurePageViewController()
-        // Do any additional setup after loading the view.
+        // configure database
+        db = Firestore.firestore()
+        
+        // get current user
+        currentUser = Auth.auth().currentUser
+        
+        // UI
+        continueButtonOutlet.alpha = 0
     }
+    
+    @IBAction func continueButton(_ sender: Any) {
+        // save all the reviews to database
+        
+        for review in reviews {
+            var ref: DocumentReference? = nil
+            ref = db.collection("reviews").addDocument(data: [
+                "user_id": "\(currentUser.uid)",
+                "user_email": "\(String(describing: currentUser.email!))",
+                "movie_id": review.movie.movieId!,
+                "movie_name": "\(String(describing: review.movie.title!))",
+                "rating": review.rating!
+            ]) { err in
+                if let err = err {
+                    print("Error adding document: \(err)")
+                } else {
+                    print("Document added with ID: \(ref!.documentID)")
+                }
+            }
+        }
+        
+        
+    }
+    
     
     func configurePageViewController() {
         movies = Movie.generateMovie()
@@ -66,7 +101,7 @@ class InitialReviewViewController: UIViewController, updateReview {
         dataViewController.imageURL = movies[index].posterUrl
         dataViewController.dateText = String(describing: movies[index].releaseDate!)
         dataViewController.ratingText = String(describing: reviews[index].rating!)
-        dataViewController.updateReviewDelegate = self
+        dataViewController.didRateDelegate = self
         
         return dataViewController
     }
@@ -81,9 +116,24 @@ class InitialReviewViewController: UIViewController, updateReview {
         return reviews
     }
     
-    // delegate method to update reviews
-    func updateReview(index: Int, rating: Int) {
+    // delegate method for when rating buttons are pushed
+    func didRate(index: Int, rating: Int) {
+        
+        // update reviews
         reviews[index].rating = rating
+        
+        // check if all reviews are complete, if so then present the 'next' button
+        var didFinishReviews = true
+        for review in reviews {
+            if review.rating == 0 {
+                didFinishReviews = false
+                break
+            }
+        }
+        
+        if didFinishReviews {
+            continueButtonOutlet.alpha = 1
+        }
     }
 }
 
