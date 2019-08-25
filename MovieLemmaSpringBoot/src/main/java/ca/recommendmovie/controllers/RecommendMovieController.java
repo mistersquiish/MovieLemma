@@ -3,14 +3,12 @@ package ca.recommendmovie.controllers;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.ExecutionException;
 
 import ca.recommendmovie.models.Movie;
 import ca.recommendmovie.models.Review;
+import ca.recommendmovie.models.User;
 import com.google.api.core.ApiFuture;
 import com.google.auth.oauth2.GoogleCredentials;
 import com.google.cloud.firestore.DocumentSnapshot;
@@ -78,25 +76,51 @@ public class RecommendMovieController {
         for (DocumentSnapshot document : documents) {
             Review review = document.toObject(Review.class);
             if (reviews.containsKey(review.getUser_id())) {
-                List<Review> userReviewed = (List<Review>) reviews.get(review.getUser_id());
-                userReviewed.add(review);
+                Map userReviewed = (Map) reviews.get(review.getUser_id());
+                userReviewed.put(review.getMovie_id(), review);
             } else {
-                List<Review> userReviewed = new ArrayList<Review>();
+                Map userReviewed = new HashMap();
+                userReviewed.put(review.getMovie_id(), review);
                 reviews.put(review.getUser_id(), userReviewed);
 
             }
         }
 
-//        // Hash reviews based on userId
-//        for (Review review : reviews) {
-//
-//        }
+        // find cosine similarities between all users and userId passed in and store
+        List<User> users = new ArrayList<User>();
 
+        // iterate through current user reviews to get the denominator squared component
+        Map<String, Review> currentUserReviews = (Map) reviews.get(currentUserId);
+        Double denominatorSquaredComponentA = 0.0;
+        for (Map.Entry<String, Review> entry : currentUserReviews.entrySet()) {
+            denominatorSquaredComponentA += Math.pow(entry.getValue().getRating(), 2);
+        }
+        denominatorSquaredComponentA = Math.sqrt(denominatorSquaredComponentA);
 
-//        // find cosine similarities between all users and userId passed in
-//        for (String userId : userIds) {
-//
-//        }
+        // iterate through all users with reviews and add cosine similarities to list
+        for (String userId : userIds) {
+            // iterate through all the users except current
+            if (userId != currentUserId && reviews.containsKey(userId)) {
+                Map<String, Review> userReviews = (Map) reviews.get(userId);
+                Double denominatorSquaredComponentB = 0.0;
+                Double numerator = 0.0;
+
+                for (Map.Entry<String, Review> entry : userReviews.entrySet()) {
+                    denominatorSquaredComponentB += Math.pow(entry.getValue().getRating(), 2);
+
+                    if (currentUserReviews.containsKey(entry.getKey())) {
+                        numerator += currentUserReviews.get(entry.getValue().getMovie_id()).getRating() * entry.getValue().getRating();
+                    }
+                }
+                denominatorSquaredComponentB = Math.sqrt(denominatorSquaredComponentB);
+
+                // add user to users list for comparison later
+                User user = new User(userId, numerator / (denominatorSquaredComponentA * denominatorSquaredComponentB));
+                users.add(user);
+            }
+        }
+        // sort users list by cosine similarity
+        Collections.sort(users, Collections.reverseOrder());
 
         return "hi";
     }
