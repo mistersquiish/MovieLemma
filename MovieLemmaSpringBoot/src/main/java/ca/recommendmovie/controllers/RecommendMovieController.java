@@ -4,7 +4,9 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
 import ca.recommendmovie.models.Movie;
@@ -54,31 +56,48 @@ public class RecommendMovieController {
     }
 
     @PostMapping("/recommendation")
-    public String recommendMovies(@RequestBody String userId) throws FirebaseAuthException, ExecutionException, InterruptedException {
+    public String recommendMovies(@RequestBody String currentUserId) throws FirebaseAuthException, ExecutionException, InterruptedException {
         List<Movie> recommendedMovies = new ArrayList<Movie>();
-        List<String> usersIds = new ArrayList<String>();
-        List<Review> reviews = new ArrayList<Review>();
+        List<String> userIds = new ArrayList<String>();
+        Map reviews = new HashMap();
 
         // Get all users in a list
         ListUsersPage page = FirebaseAuth.getInstance().listUsers(null);
         while (page != null) {
             for (ExportedUserRecord user : page.getValues()) {
-                usersIds.add(user.getUid());
+                if (!user.getUid().equals(currentUserId)) {
+                    userIds.add(user.getUid());
+                }
             }
             page = page.getNextPage();
         }
 
-        // Get all reviews in a list
+        // Get all reviews in a hashmap
         ApiFuture<QuerySnapshot> future = db.collection("reviews").get();
         List<QueryDocumentSnapshot> documents = future.get().getDocuments();
         for (DocumentSnapshot document : documents) {
-            reviews.add(document.toObject(Review.class));
+            Review review = document.toObject(Review.class);
+            if (reviews.containsKey(review.getUser_id())) {
+                List<Review> userReviewed = (List<Review>) reviews.get(review.getUser_id());
+                userReviewed.add(review);
+            } else {
+                List<Review> userReviewed = new ArrayList<Review>();
+                reviews.put(review.getUser_id(), userReviewed);
+
+            }
         }
 
+//        // Hash reviews based on userId
+//        for (Review review : reviews) {
+//
+//        }
+
+
+//        // find cosine similarities between all users and userId passed in
+//        for (String userId : userIds) {
+//
+//        }
 
         return "hi";
-    }
-
-    public void findCosineSimilarity() {
     }
 }

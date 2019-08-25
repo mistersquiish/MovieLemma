@@ -1,4 +1,4 @@
 # curl commands
-curl -i -H "Content-Type: application/json" -X POST -d '{"asdf"}' localhost:8080/recommendation
+curl -i -H "Content-Type: application/json" -X POST -d 'LXQ1wbepr0au5tfi2rT6O8EBVer2' localhost:8080/recommendation
 
 curl -i -H GET localhost:8080/hello

@@ -74,7 +74,6 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
     
     // need to add error handling and nil handling
     @IBAction func signupButton(_ sender: Any) {
-        self.performSegue(withIdentifier: "InitialReviewSegue", sender: nil)
         if emailTextField.text != "" && passwordTextField.text != "" {
             Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) { authResult, error in
 
@@ -131,7 +130,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
             // Not found, so remove keyboard.
             passwordTextField.resignFirstResponder()
             // perform signup button function
-            
+            signupButton(self)
         }
         // Do not add a line break
         return false
