@@ -1,30 +1,44 @@
 package ca.recommendmovie.models;
 
 public class Review {
-    private Movie movie;
-    private String userId;
+    private String movie_name;
+    private String user_id;
+    private int movie_id;
+    private String user_email;
     private int rating;
 
-    public Review(Movie movie, String userId, int rating) {
-        this.movie = movie;
-        this.userId = userId;
-        this.rating = rating;
+    public Review() {}
+
+    public String getMovie_name() {
+        return movie_name;
     }
 
-    public Movie getMovie() {
-        return movie;
+    public void setMovie_name(String movie_name) {
+        this.movie_name = movie_name;
     }
 
-    public void setMovie(Movie movie) {
-        this.movie = movie;
+    public String getUser_id() {
+        return user_id;
     }
 
-    public String getUserId() {
-        return userId;
+    public void setUser_id(String user_id) {
+        this.user_id = user_id;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public int getMovie_id() {
+        return movie_id;
+    }
+
+    public void setMovie_id(int movie_id) {
+        this.movie_id = movie_id;
+    }
+
+    public String getUser_email() {
+        return user_email;
+    }
+
+    public void setUser_email(String user_email) {
+        this.user_email = user_email;
     }
 
     public int getRating() {
