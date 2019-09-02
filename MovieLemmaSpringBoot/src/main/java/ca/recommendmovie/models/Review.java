@@ -3,11 +3,11 @@ package ca.recommendmovie.models;
 public class Review {
     private String movie_name;
     private String user_id;
-    private int movie_id;
     private String user_email;
     private int rating;
+    private Movie movie;
 
-    public Review() {}
+    public Review() { }
 
     public String getMovie_name() {
         return movie_name;
@@ -25,14 +25,6 @@ public class Review {
         this.user_id = user_id;
     }
 
-    public int getMovie_id() {
-        return movie_id;
-    }
-
-    public void setMovie_id(int movie_id) {
-        this.movie_id = movie_id;
-    }
-
     public String getUser_email() {
         return user_email;
     }
@@ -47,5 +39,13 @@ public class Review {
 
     public void setRating(int rating) {
         this.rating = rating;
+    }
+
+    public Movie getMovie() {
+        return movie;
+    }
+
+    public void setMovie(Movie movie) {
+        this.movie = movie;
     }
 }

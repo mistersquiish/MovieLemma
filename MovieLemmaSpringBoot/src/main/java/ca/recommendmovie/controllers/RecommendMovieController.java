@@ -33,6 +33,7 @@ import javax.annotation.PostConstruct;
 public class RecommendMovieController {
 
     Firestore db;
+    String db_url = "https://movielemma.firebaseio.com/";
 
     @PostConstruct
     private void init() throws IOException {
@@ -40,7 +41,7 @@ public class RecommendMovieController {
 
         FirebaseOptions options = new FirebaseOptions.Builder()
                 .setCredentials(GoogleCredentials.getApplicationDefault())
-                .setDatabaseUrl("https://movielemma.firebaseio.com/")
+                .setDatabaseUrl(db_url)
                 .build();
 
         FirebaseApp.initializeApp(options);
@@ -77,10 +78,10 @@ public class RecommendMovieController {
             Review review = document.toObject(Review.class);
             if (reviews.containsKey(review.getUser_id())) {
                 Map userReviewed = (Map) reviews.get(review.getUser_id());
-                userReviewed.put(review.getMovie_id(), review);
+                userReviewed.put(review.getMovie().getId(), review);
             } else {
                 Map userReviewed = new HashMap();
-                userReviewed.put(review.getMovie_id(), review);
+                userReviewed.put(review.getMovie().getId(), review);
                 reviews.put(review.getUser_id(), userReviewed);
 
             }
@@ -109,7 +110,7 @@ public class RecommendMovieController {
                     denominatorSquaredComponentB += Math.pow(entry.getValue().getRating(), 2);
 
                     if (currentUserReviews.containsKey(entry.getKey())) {
-                        numerator += currentUserReviews.get(entry.getValue().getMovie_id()).getRating() * entry.getValue().getRating();
+                        numerator += currentUserReviews.get(entry.getValue().getMovie().getId()).getRating() * entry.getValue().getRating();
                     }
                 }
                 denominatorSquaredComponentB = Math.sqrt(denominatorSquaredComponentB);
@@ -121,6 +122,12 @@ public class RecommendMovieController {
         }
         // sort users list by cosine similarity
         Collections.sort(users, Collections.reverseOrder());
+
+        // only take the top 3 users. if less than 3 total users, take all users
+        if (users.size() > 3) {
+            users = users.subList(0, 3);
+        }
+
 
         return "hi";
     }

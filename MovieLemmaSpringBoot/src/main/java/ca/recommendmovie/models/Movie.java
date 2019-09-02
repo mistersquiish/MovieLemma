@@ -1,17 +1,27 @@
 package ca.recommendmovie.models;
 
+import java.util.Date;
+
 public class Movie {
     private String title;
-    private int movieId;
-    private String posterUrl;
-    private int releaseDate;
+    private String id;
+    private String poster_path;
+    private String release_date;
+    private String backdrop_path;
+    private Double vote_average;
+    private Double vote_count;
 
-    public Movie(String title, int movieId, String posterUrl, int releaseDate) {
+    public Movie(String title, String id, String poster_path, String release_date, String backdrop_path, Double vote_average, Double vote_count) {
         this.title = title;
-        this.movieId = movieId;
-        this.posterUrl = posterUrl;
-        this.releaseDate = releaseDate;
+        this.id = id;
+        this.poster_path = poster_path;
+        this.release_date = release_date;
+        this.backdrop_path = backdrop_path;
+        this.vote_average = vote_average;
+        this.vote_count = vote_count;
     }
+
+    public Movie() {}
 
     public String getTitle() {
         return title;
@@ -21,27 +31,51 @@ public class Movie {
         this.title = title;
     }
 
-    public int getMovieId() {
-        return movieId;
+    public String getId() {
+        return id;
     }
 
-    public void setMovieId(int movieId) {
-        this.movieId = movieId;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public String getPosterUrl() {
-        return posterUrl;
+    public String getPoster_path() {
+        return poster_path;
     }
 
-    public void setPosterUrl(String posterUrl) {
-        this.posterUrl = posterUrl;
+    public void setPoster_path(String poster_path) {
+        this.poster_path = poster_path;
     }
 
-    public int getReleaseDate() {
-        return releaseDate;
+    public String getRelease_date() {
+        return release_date;
     }
 
-    public void setReleaseDate(int releaseDate) {
-        this.releaseDate = releaseDate;
+    public void setRelease_date(String release_date) {
+        this.release_date = release_date;
+    }
+
+    public String getBackdrop_path() {
+        return backdrop_path;
+    }
+
+    public void setBackdrop_path(String backdrop_path) {
+        this.backdrop_path = backdrop_path;
+    }
+
+    public Double getVote_average() {
+        return vote_average;
+    }
+
+    public void setVote_average(Double vote_average) {
+        this.vote_average = vote_average;
+    }
+
+    public Double getVote_count() {
+        return vote_count;
+    }
+
+    public void setVote_count(Double vote_count) {
+        this.vote_count = vote_count;
     }
 }
