@@ -72,8 +72,8 @@ public class RecommendMovieController {
         }
 
         // Get all reviews in a hashmap
-        ApiFuture<QuerySnapshot> future = db.collection("reviews").get();
-        List<QueryDocumentSnapshot> documents = future.get().getDocuments();
+        ApiFuture<QuerySnapshot> db_reviews = db.collection("reviews").get();
+        List<QueryDocumentSnapshot> documents = db_reviews.get().getDocuments();
         for (DocumentSnapshot document : documents) {
             Review review = document.toObject(Review.class);
             if (reviews.containsKey(review.getUser_id())) {
@@ -123,10 +123,44 @@ public class RecommendMovieController {
         // sort users list by cosine similarity
         Collections.sort(users, Collections.reverseOrder());
 
-        // only take the top 3 users. if less than 3 total users, take all users
-        if (users.size() > 3) {
-            users = users.subList(0, 3);
+        // only take cosine similarity above .80. Kind of arbitrary
+        users.removeIf(n -> (n.getCosineSimilarity() < .80));
+
+        // get movies rated highly by similar people
+        // add movies that the user potentially may like
+        for (User user : users) {
+            Map<String, Review> userReview = (Map) reviews.get(user.getUser_id());
+            for (Map.Entry<String, Review> entry : userReview.entrySet()) {
+                // only add movies that have not been rated by current user and have a rating above 4
+                if (!currentUserReviews.containsKey(entry.getValue().getMovie().getId()) && entry.getValue().getRating() >= 4) {
+                    recommendedMovies.add(entry.getValue().getMovie());
+                }
+            }
         }
+        // predict rating for each movie in recommended list
+        for (Movie movie : recommendedMovies) {
+            Double predictedRatingNumerator = 0.0;
+            Double predictedRatingDenominator = 0.0;
+            for (User user : users) {
+                Map<String, Review> userReview = (Map) reviews.get(user.getUser_id());
+                if (userReview.containsKey(movie.getId())) {
+                    predictedRatingDenominator += user.getCosineSimilarity();
+                    predictedRatingNumerator += user.getCosineSimilarity() * userReview.get(movie.getId()).getRating();
+                }
+            }
+
+            movie.setPredicted_rating(predictedRatingNumerator / predictedRatingDenominator);
+        }
+
+        for (Movie m : recommendedMovies) {
+            System.out.println(m.getPredicted_rating());
+            System.out.println(m.getTitle());
+        }
+
+        // sort based on rating
+
+        // return recommended movies
+
 
 
         return "hi";

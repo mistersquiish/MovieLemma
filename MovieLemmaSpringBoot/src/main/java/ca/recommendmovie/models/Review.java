@@ -1,21 +1,12 @@
 package ca.recommendmovie.models;
 
 public class Review {
-    private String movie_name;
     private String user_id;
     private String user_email;
     private int rating;
     private Movie movie;
 
     public Review() { }
-
-    public String getMovie_name() {
-        return movie_name;
-    }
-
-    public void setMovie_name(String movie_name) {
-        this.movie_name = movie_name;
-    }
 
     public String getUser_id() {
         return user_id;

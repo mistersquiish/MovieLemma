@@ -10,6 +10,7 @@ public class Movie {
     private String backdrop_path;
     private Double vote_average;
     private Double vote_count;
+    private Double predicted_rating;
 
     public Movie(String title, String id, String poster_path, String release_date, String backdrop_path, Double vote_average, Double vote_count) {
         this.title = title;
@@ -77,5 +78,13 @@ public class Movie {
 
     public void setVote_count(Double vote_count) {
         this.vote_count = vote_count;
+    }
+
+    public Double getPredicted_rating() {
+        return predicted_rating;
+    }
+
+    public void setPredicted_rating(Double predicted_rating) {
+        this.predicted_rating = predicted_rating;
     }
 }
