@@ -22,10 +22,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthException;
 import com.google.firebase.auth.ListUsersPage;
 import com.google.firebase.cloud.FirestoreClient;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.PostConstruct;
 
@@ -54,8 +51,8 @@ public class RecommendMovieController {
         return "hello";
     }
 
-    @PostMapping("/recommendation")
-    public String recommendMovies(@RequestBody String currentUserId) throws FirebaseAuthException, ExecutionException, InterruptedException {
+    @GetMapping("/recommendation/{id}")
+    public List<Movie> recommendMovies(@PathVariable("id") String currentUserId) throws FirebaseAuthException, ExecutionException, InterruptedException {
         List<Movie> recommendedMovies = new ArrayList<Movie>();
         List<String> userIds = new ArrayList<String>();
         Map reviews = new HashMap();
@@ -163,6 +160,6 @@ public class RecommendMovieController {
 
 
 
-        return "hi";
+        return recommendedMovies;
     }
 }

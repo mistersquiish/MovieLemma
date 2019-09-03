@@ -5,6 +5,8 @@ import java.util.Objects;
 
 public class Movie {
     private String title;
+    private String overview;
+
     private String id;
     private String poster_path;
     private String release_date;
@@ -13,14 +15,16 @@ public class Movie {
     private Double vote_count;
     private Double predicted_rating;
 
-    public Movie(String title, String id, String poster_path, String release_date, String backdrop_path, Double vote_average, Double vote_count) {
+    public Movie(String title, String overview, String id, String poster_path, String release_date, String backdrop_path, Double vote_average, Double vote_count, Double predicted_rating) {
         this.title = title;
+        this.overview = overview;
         this.id = id;
         this.poster_path = poster_path;
         this.release_date = release_date;
         this.backdrop_path = backdrop_path;
         this.vote_average = vote_average;
         this.vote_count = vote_count;
+        this.predicted_rating = predicted_rating;
     }
 
     public Movie() {}
@@ -101,5 +105,14 @@ public class Movie {
 
     public void setPredicted_rating(Double predicted_rating) {
         this.predicted_rating = predicted_rating;
+    }
+
+
+    public String getOverview() {
+        return overview;
+    }
+
+    public void setOverview(String overview) {
+        this.overview = overview;
     }
 }
