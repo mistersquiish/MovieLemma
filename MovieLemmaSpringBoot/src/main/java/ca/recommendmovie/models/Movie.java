@@ -1,6 +1,7 @@
 package ca.recommendmovie.models;
 
 import java.util.Date;
+import java.util.Objects;
 
 public class Movie {
     private String title;
@@ -70,6 +71,20 @@ public class Movie {
 
     public void setVote_average(Double vote_average) {
         this.vote_average = vote_average;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Movie movie = (Movie) o;
+        return Objects.equals(title, movie.title) &&
+                Objects.equals(id, movie.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(title, id, poster_path, release_date, backdrop_path, vote_average, vote_count, predicted_rating);
     }
 
     public Double getVote_count() {

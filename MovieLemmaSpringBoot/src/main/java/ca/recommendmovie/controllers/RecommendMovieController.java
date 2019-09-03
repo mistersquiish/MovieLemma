@@ -132,7 +132,7 @@ public class RecommendMovieController {
             Map<String, Review> userReview = (Map) reviews.get(user.getUser_id());
             for (Map.Entry<String, Review> entry : userReview.entrySet()) {
                 // only add movies that have not been rated by current user and have a rating above 4
-                if (!currentUserReviews.containsKey(entry.getValue().getMovie().getId()) && entry.getValue().getRating() >= 4) {
+                if (!currentUserReviews.containsKey(entry.getValue().getMovie().getId()) && entry.getValue().getRating() >= 4 && !recommendedMovies.contains(entry.getValue().getMovie())) {
                     recommendedMovies.add(entry.getValue().getMovie());
                 }
             }
