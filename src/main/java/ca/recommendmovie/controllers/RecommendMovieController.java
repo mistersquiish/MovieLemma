@@ -89,6 +89,10 @@ public class RecommendMovieController {
 
         // iterate through current user reviews to get the denominator squared component
         Map<String, Review> currentUserReviews = (Map) reviews.get(currentUserId);
+        if (currentUserReviews == null) {
+            return null;
+        }
+
         Double denominatorSquaredComponentA = 0.0;
         for (Map.Entry<String, Review> entry : currentUserReviews.entrySet()) {
             denominatorSquaredComponentA += Math.pow(entry.getValue().getRating(), 2);
