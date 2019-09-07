@@ -124,6 +124,13 @@ public class RecommendMovieController {
         // sort users list by cosine similarity
         Collections.sort(users, Collections.reverseOrder());
 
+        // debugging
+        System.out.println("Cosine Similarities for user: " + currentUserId);
+        for (User user : users) {
+            System.out.println(user.getUser_id() + ": " + user.getCosineSimilarity());
+        }
+        System.out.println("Note: only taking similarty above .80");
+
         // only take cosine similarity above .80. Kind of arbitrary
         users.removeIf(n -> (n.getCosineSimilarity() < .80));
 
